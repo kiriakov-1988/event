@@ -1,0 +1,13 @@
+easy_admin:
+   entities:
+       # List the entity class name you want to manage
+       - App\Entity\Event
+       - App\Entity\Day
+       - App\Entity\Lecture
+       - App\Entity\LectureType
+       - App\Entity\Room
+       - App\Entity\Speaker
+       - App\Entity\Sponsor
+       - App\Entity\SponsorType
+       - App\Entity\Ticket
+       - App\Entity\PhotoGallery
