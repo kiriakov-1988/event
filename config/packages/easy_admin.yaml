@@ -1,13 +1,93 @@
 easy_admin:
    entities:
        # List the entity class name you want to manage
-       - App\Entity\Event
-       - App\Entity\Day
-       - App\Entity\Lecture
-       - App\Entity\LectureType
-       - App\Entity\Room
-       - App\Entity\Speaker
-       - App\Entity\Sponsor
-       - App\Entity\SponsorType
-       - App\Entity\Ticket
-       - App\Entity\PhotoGallery
+       # - App\Entity\Event
+
+        Event:
+            class: App\Entity\Event
+        Day:
+            class: App\Entity\Day
+        Lecture:
+            class: App\Entity\Lecture
+        LectureType:
+            class: App\Entity\LectureType
+        Room:
+            class: App\Entity\Room
+        Speaker:
+            class: App\Entity\Speaker
+
+            form:
+                fields:
+                    - full_name
+                    - company
+                    - position
+                    - { property: 'photoFile', type: 'vich_image' }
+                    - { property: 'speakers', label: 'Lecture' }
+            
+            list:
+                fields:
+                    - id
+                    - full_name
+                    - company
+                    - position
+                    - { property: 'photo', template: 'vich_uploader_image.html.twig', type: 'image', base_path: '%app.path.photo_images%' }
+                    - { property: 'speakers', label: 'Lecture' }
+
+            show:
+                fields:
+                    - id
+                    - full_name
+                    - company
+                    - position
+                    - { property: 'photo', type: 'image', base_path: '%app.path.photo_images%' }
+                    - { property: 'speakers', label: 'Lecture' }
+
+        Sponsor:
+            class: App\Entity\Sponsor
+
+            form:
+                fields:
+                    - name
+                    - website
+                    - { property: 'logoFile', type: 'vich_image' }
+                    - type
+            
+            list:
+                fields:
+                    - id
+                    - name
+                    - website
+                    - { property: 'logo', template: 'vich_uploader_image.html.twig', type: 'image', base_path: '%app.path.logo_images%' }
+                    - type
+
+            show:
+                fields:
+                    - id
+                    - name
+                    - website
+                    - { property: 'logo', type: 'image', base_path: '%app.path.logo_images%' }
+                    - type
+
+
+        SponsorType:
+            class: App\Entity\SponsorType
+        Ticket:
+            class: App\Entity\Ticket
+        
+        PhotoGallery:
+            class: App\Entity\PhotoGallery
+
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+            
+            list:
+                fields:
+                    - id
+                    - { property: 'image', template: 'vich_uploader_image.html.twig', type: 'image', base_path: '%app.path.gallery_images%' }
+
+            show:
+                fields:
+                    - id
+                    - { property: 'image', type: 'image', base_path: '%app.path.gallery_images%' }
+

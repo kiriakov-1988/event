@@ -4,9 +4,12 @@ namespace App\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SponsorRepository")
+ * @Vich\Uploadable
  */
 class Sponsor
 {
@@ -32,6 +35,11 @@ class Sponsor
      */
     private $logo;
 
+    /**
+     * @Vich\UploadableField(mapping="logo_images", fileNameProperty="logo")
+     * @var File
+     */
+    private $logoFile;
        
 
     /**
@@ -99,6 +107,17 @@ class Sponsor
     public function setLogo($logo): void
     {
         $this->logo = $logo;
+    }
+
+    public function setLogoFile(File $logo = null)
+    {
+        $this->logoFile = $logo;
+    }
+
+
+    public function getLogoFile()
+    {
+        return $this->logoFile;
     }
 
 

@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SpeakerRepository")
+ * @Vich\Uploadable
  */
 class Speaker
 {
@@ -36,6 +39,12 @@ class Speaker
      * @ORM\Column(type="string")
      */
     private $photo;
+
+    /**
+     * @Vich\UploadableField(mapping="photo_images", fileNameProperty="photo")
+     * @var File
+     */
+    private $photoFile;
 
     /**
      * @ORM\OneToMany(
@@ -126,6 +135,17 @@ class Speaker
     public function setPhoto($photo): void
     {
         $this->photo = $photo;
+    }
+
+    public function setPhotoFile(File $photo = null)
+    {
+        $this->photoFile = $photo;
+    }
+
+
+    public function getPhotoFile()
+    {
+        return $this->photoFile;
     }
 
 

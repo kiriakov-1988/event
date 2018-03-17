@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PhotoGalleryRepository")
+ * @Vich\Uploadable
  */
 class PhotoGallery
 {
@@ -19,7 +22,13 @@ class PhotoGallery
     /**
      * @ORM\Column(type="string")
      */
-    private $src;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="gallery_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @return mixed
@@ -32,16 +41,27 @@ class PhotoGallery
     /**
      * @return mixed
      */
-    public function getSrc()
+    public function getImage()
     {
-        return $this->src;
+        return $this->image;
     }
 
     /**
-     * @param mixed $src
+     * @param mixed $image
      */
-    public function setSrc($src): void
+    public function setImage($image): void
     {
-        $this->src = $src;
+        $this->image = $image;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+    }
+
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }
