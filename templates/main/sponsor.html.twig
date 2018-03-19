@@ -1,0 +1,16 @@
+{% for i in 0..(sponsor|length - 1) %}
+
+<li>
+	<h3>{{ sponsor[i].name }}</h3>
+	<span class=""><a href="{{ sponsor[i].website }}">{{ sponsor[i].website }}</a></span>
+	<div class="product-holder">
+		<div class="image">
+			<a href="#"><img class="large" src="{{ asset('uploads/images/logo/' ~ sponsor[i].logo) }}" alt="{{sponsor[i].logo}}" width="180" height="91" /></a>
+		</div>
+		<div class="stick">
+			<img src="images/{{sponsor[i].type}}-sponsor.png" alt="{{sponsor[i].type}} sponsor" width="82" height="82" />
+		</div>
+	</div>
+</li>
+
+{% endfor %}

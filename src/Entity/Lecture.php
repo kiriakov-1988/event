@@ -93,23 +93,6 @@ class Lecture
     /**
      * @return mixed
      */
-    public function getWebsite()
-    {
-        return $this->website;
-    }
-
-    /**
-     * @param mixed $website
-     */
-    public function setWebsite($website): void
-    {
-        $this->website = $website;
-    }
-
-
-    /**
-     * @return mixed
-     */
     public function getDay()
     {
         return $this->day;

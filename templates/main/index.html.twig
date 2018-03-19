@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ event.title }} {% endblock %}
+
+{% block body %}
+
+
+<!-- start header -->
+	<div class="header-wrap">
+		<div id="header">
+			<div class="header-holder">
+				<div class="wrap">
+					<h1 class="logo"><a href="/">PHP event</a></h1>
+					<ul id="nav" class="ddsmoothmenu">
+						<li><a href="#about"><span><em>About</em></span></a></li>
+						<li><a href="#speakers"><span><em>Speakers</em></span></a></li>
+						<li><a href="#lectures"><span><em>Lectures</em></span></a></li>
+						<li><a href="#tickets"><span><em>Tickets</em></span></a></li>
+						<li><a href="#sponsors"><span><em>Sponsors</em></span></a></li>
+						<li><a href="#contacts"><span><em>Contacts</em></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	<!-- start intro-holder -->
+	<div id="intro-holder">
+		<div class="intro-box large" id="about">
+			<div class="welcome-box">
+				<div id="intro-slider">
+					{{ render(controller (
+		                'App\\Controller\\PhotoGalleryController::index'
+		            )) }}
+				</div>
+				<div class="text-box">
+					<h2>Welcome to {{ event.title }}!</h2>
+					<div>
+						{{ event.description|raw }}
+					</div>
+					<h3> {{ event.date }} </h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end intro-holder -->
+
+	<!-- start main -->
+	<div id="main">
+		<div class="popular-holder" id="speakers">
+			<div class="title-box">
+				<h2>Speakers</h2>
+			</div>
+			<ul class="gallery">
+				{{ render(controller (
+	                'App\\Controller\\SpeakerController::index'
+	            )) }}
+			</ul>
+		</div>
+	</div>
+	<!-- end main -->
+
+
+	<!-- start promo-box -->
+	<div class="promo-wrap" id="lectures">
+		<div class="promo-box">
+			<div class="promo-holder">
+				<strong ></strong>
+				<a href="#steps-slider" class="btn-take ancLinks">Choose lecture</a>
+			</div>
+		</div>
+	</div>
+	<!-- end promo-box -->
+	<div id="steps-slider">
+		{{ render(controller (
+            'App\\Controller\\LectureController::index'
+        )) }}
+	</div>
+	<!-- start ticket -->
+	<div id="main">
+		<div class="popular-holder" id="tickets">
+			<div class="title-box">
+				<h2>Tickets</h2>
+			</div>
+			<ul class="gallery">
+				{{ render(controller (
+		            'App\\Controller\\TicketController::index'
+		        )) }}
+			</ul>
+		</div>
+	</div>
+	<!-- end ticket -->
+	<div id="main">
+		<div class="popular-holder" id="sponsors">
+			<div class="title-box">
+				<h2>Sponsors</h2>
+			</div>
+			<ul class="gallery">
+				{{ render(controller (
+		            'App\\Controller\\SponsorController::index'
+		        )) }}
+			</ul>
+		</div>
+	</div>
+	<!-- start footer -->
+	<div id="footer">
+		<div class="footer-wrap" id="contacts">
+			<div class="footer-holder">
+				<div class="threecolumns">
+					
+					<div class="column">
+						<h3>Contact Us</h3>
+						<dl class="contact-list">
+							<dt>Address:</dt>
+							<dd>Kiev</dd>
+							<dt>Phone:</dt>
+							<dd>+8 044 1234 567</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copy-wrap">
+			<div class="copy-holder">
+				<span class="copy">Copyright &copy; Synoptic 2010. All Rights Reserved</span>
+				<a href="#" class="design">made by Symfony 4</a>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
+
+{% endblock %}

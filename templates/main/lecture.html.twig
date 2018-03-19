@@ -1,0 +1,49 @@
+<div class="steps-holder">
+			<ul class="pagination">
+				{% for i in 0..(days|length - 1) %}
+					<li class="active">
+						<a href="#">
+							
+							<span>{{ days[i] }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="controls">
+			<a href="#" class="previous">previous</a>
+			<a href="#" class="next">next</a>
+		</div>
+		<div class="slide-holder">
+			<div class="container">
+				<ul class="slides">
+					{% for i in 0..(days|length - 1) %}
+						<li>
+							<div class="text-box">
+								<table class="my_table" border="1" cellspacing="0">
+									<tr>
+										<th>Time</th>
+										<th>Duration</th>
+										<th>Subject</th>
+										<th>Type</th>
+										<th>Speaker</th>
+										<th>Room</th>
+									</tr>
+									{% for k in 0..(lecture|length - 1) if days[i] == lecture[k].day  %}
+										<tr>
+											<td>{{ lecture[k].time.format('H:i') }}</td>
+											<td>{{ lecture[k].duration }} min.</td>
+											<td>{{ lecture[k].name }}</td>
+											<td>{{ lecture[k].type }} </td>
+											<td>{{ lecture[k].speaker }} </td>
+											<td>{{ lecture[k].room }} </td>
+										</tr>
+									{% endfor %}
+
+								</table>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>

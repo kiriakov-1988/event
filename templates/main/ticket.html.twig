@@ -1,0 +1,12 @@
+{% for i in 0..(ticket|length - 1) %}
+
+<li>
+	<h3>{{ ticket[i].name }}</h3>
+	<span class="sub-title">{{ ticket[i].description }}</span>
+	<div class="wrap">
+		<span class="price">Price: ${{ ticket[i].cost }}</span>
+	</div>
+	<h4><a href="#">Buy</a></h4>
+</li>
+
+{% endfor %}

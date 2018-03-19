@@ -1,0 +1,16 @@
+<ul class="pagination">
+	{% for i in 1..photo_gallery|length %}
+		<li><a href="#">{{i}}</a></li>
+	{% endfor %}
+</ul>
+<div class="container">
+	<ul class="slides">
+
+		{% for i in 0..(photo_gallery|length - 1) %}
+			<li><a href="#"><img src="{{ asset('uploads/images/gallery/' ~ photo_gallery[i].image) }}" alt="{{photo_gallery[i].image}}" width="486" height="284" /></a></li>
+		{% endfor %}
+
+	</ul>
+</div>
+<div class="stick">Photo gallery</div>
+<div class="hotspot"></div>

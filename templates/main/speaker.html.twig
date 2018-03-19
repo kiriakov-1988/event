@@ -1,0 +1,18 @@
+{% for i in 0..(speaker|length - 1) %}
+
+<li>
+	<h3>{{ speaker[i].fullName }}</h3>
+	<span>{{ speaker[i].company }}</span>
+	<div class="speaker">
+		<div class="image">
+			<img class="large" src="{{ asset('uploads/images/photo/' ~ speaker[i].photo) }}" alt="{{speaker[i].photo}}" width="121" height="121" />
+		</div>
+		<div class="wrap">
+			<span class="price">{{ speaker[i].position }}</span>
+			
+		</div>
+		<div class="hotspot"></div>
+	</div>
+</li>
+
+{% endfor %}
